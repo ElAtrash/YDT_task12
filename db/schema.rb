@@ -10,15 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_143859) do
+ActiveRecord::Schema.define(version: 2020_05_03_173752) do
 
   create_table "roles", force: :cascade do |t|
-    t.boolean "create", default: false
-    t.boolean "read", default: false
-    t.boolean "update", default: false
-    t.boolean "delete", default: false
+    t.boolean "can_create", default: false
+    t.boolean "can_read", default: false
+    t.boolean "can_update", default: false
+    t.boolean "can_delete", default: false
     t.boolean "admin", default: false
     t.string "role_type", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "topic"
+    t.text "description"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
