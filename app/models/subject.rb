@@ -1,3 +1,5 @@
 class Subject < ApplicationRecord
-  enum status: ['new', 'old']
+  enum status: { New: 'New', Old: 'Old' }
+
+  validates :topic, :description, presence: true
 end

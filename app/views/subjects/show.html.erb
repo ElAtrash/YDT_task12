@@ -15,5 +15,6 @@
   <%= @subject.status %>
 </p>
 
-<%= link_to 'Edit', edit_subject_path(@subject) %> |
+<%= link_to 'Edit', edit_subject_path(@subject) if policy(@subject).update? %>
+<br />
 <%= link_to 'Back', subjects_path %>

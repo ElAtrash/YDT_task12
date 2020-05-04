@@ -2,7 +2,7 @@
 
 <h1>Subjects</h1>
 
-<table>
+<table class="table table-bordered table-striped table-condensed table-hover">
   <thead>
     <tr>
       <th>Topic</th>
@@ -19,8 +19,12 @@
         <td><%= subject.description %></td>
         <td><%= subject.status %></td>
         <td><%= link_to 'Show', subject %></td>
-        <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
-        <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if policy(subject).update? %>
+          <td><%= link_to 'Edit', edit_subject_path(subject)  %></td>
+        <% end %>
+        <% if policy(subject).destroy? %>
+          <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Subject', new_subject_path %>
+<%= link_to 'New Subject', new_subject_path if policy(@subjects).create? %>

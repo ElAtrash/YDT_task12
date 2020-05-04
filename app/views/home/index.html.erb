@@ -1,1 +1,17 @@
-Home
+<% unless user_signed_in? %>
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Welcome!</h1>
+      <p>Please Sign In to become part of our community and view all of our subjects.</p>
+    </div>
+  </div>
+<% else %>
+<br />
+  <div class="jumbotron">
+    <div class="container">
+      <h3 class="display-5">Welcome, <%= current_user.username %>! </h3>
+      <br />
+      <%= link_to "Explore subjects", subjects_path, class: "btn btn-primary btn-lg", style: "background-color: #008691;"%>
+    </div>
+  </div>
+<% end%>

@@ -1,19 +1,27 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #008691;">
-  <a class="navbar-brand" href="/">Task 12</a>
+  <a class="navbar-brand" href="/"><strong>Task 12</strong></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
+      <% if current_user.role.admin? %>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <%= link_to 'Roles', roles_path, class: "nav-link" %>
       </li>
+      <li class="nav-item active">
+        <%= link_to 'Users', users_path, class: "nav-link" %>
+      </li>
+      <% end %>
     </ul>
   </div>
   <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
     <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
+      <li class="nav-item active">
+        <%= link_to current_user.username, current_user, class: "nav-link" %>
+      </li>
       <li class="nav-item active">
         <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
       </li>
