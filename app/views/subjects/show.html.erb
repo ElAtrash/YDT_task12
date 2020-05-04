@@ -1,20 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 m-3">
+      <h3><strong>Topic: </strong><%= @subject.topic %></h3>
+      <hr />
+      <p><strong>Description: </strong><%= @subject.description %></p>
+      <p><em><%= @subject.status %> subject</em></p>
+      </div>
+      <br />
+    </div>
+    <% if policy(@subject).update? %>
+      <%= link_to 'Edit', edit_subject_path(@subject), class: "btn btn-primary", style: "background-color: #008691;"  %>
+    <% end %>
 
-<p>
-  <strong>Topic:</strong>
-  <%= @subject.topic %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @subject.description %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @subject.status %>
-</p>
-
-<%= link_to 'Edit', edit_subject_path(@subject) if policy(@subject).update? %>
-<br />
-<%= link_to 'Back', subjects_path %>
+    <%= link_to 'Back', subjects_path, class: "btn btn-primary", style: "background-color: #008691;"  %>
+  </div>
+</div>

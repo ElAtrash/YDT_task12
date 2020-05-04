@@ -1,35 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Subjects</h1>
-
-<table class="table table-bordered table-striped table-condensed table-hover">
-  <thead>
-    <tr>
-      <th>Topic</th>
-      <th>Description</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 m-3">
     <% @subjects.each do |subject| %>
-      <tr>
-        <td><%= subject.topic %></td>
-        <td><%= subject.description %></td>
-        <td><%= subject.status %></td>
-        <td><%= link_to 'Show', subject %></td>
+      <h2><%= subject.topic %></h2>
+      <p><%= subject.description %></p>
+      <p><em><%= subject.status %> subject</em></p>
+      <div><%= link_to 'Show', subject, class: "btn btn-secondary", role: "button" %>
         <% if policy(subject).update? %>
-          <td><%= link_to 'Edit', edit_subject_path(subject)  %></td>
+          <%= link_to 'Edit', edit_subject_path(subject), class: "btn btn-secondary", role: "button" %>
         <% end %>
+
         <% if policy(subject).destroy? %>
-          <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+          <%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary", role: "button" %>
         <% end %>
-      </tr>
+      </div>
+      <hr />
     <% end %>
-  </tbody>
-</table>
+    </div>
+  </div>
+<% if policy(@subjects).create? %>
+  <%= link_to 'New Subject', new_subject_path, class: "btn btn-primary", style: "background-color: #008691;"  %>
+<% end %>
+</div>
 
-<br>
-
-<%= link_to 'New Subject', new_subject_path if policy(@subjects).create? %>
