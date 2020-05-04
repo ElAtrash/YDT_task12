@@ -1,23 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Create:</strong>
-  <%= @role.create %>
+  <strong>Role Type:</strong>
+  <%= @role.role_type %>
 </p>
 
 <p>
-  <strong>Read:</strong>
-  <%= @role.read %>
+  <strong>Is admin:</strong>
+  <%= @role.admin %>
 </p>
 
 <p>
-  <strong>Update:</strong>
-  <%= @role.update %>
+  <strong>Can create:</strong>
+  <%= @role.can_create %>
 </p>
 
 <p>
-  <strong>Delete:</strong>
-  <%= @role.delete %>
+  <strong>Can read:</strong>
+  <%= @role.can_read %>
+</p>
+
+<p>
+  <strong>Can update:</strong>
+  <%= @role.can_update %>
+</p>
+
+<p>
+  <strong>Can delete:</strong>
+  <%= @role.can_delete %>
 </p>
 
 <%= link_to 'Edit', edit_role_path(@role) %> |

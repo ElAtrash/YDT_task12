@@ -12,23 +12,33 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :create %>
-    <%= form.check_box :create %>
+    <%= form.label :role_type %>
+    <%= form.text_field :role_type %>
   </div>
 
   <div class="field">
-    <%= form.label :read %>
-    <%= form.check_box :read %>
+    <%= form.label 'is admin?' %>
+    <%= form.check_box :admin %>
   </div>
 
   <div class="field">
-    <%= form.label :update %>
-    <%= form.check_box :update %>
+    <%= form.label :can_create %>
+    <%= form.check_box :can_create %>
   </div>
 
   <div class="field">
-    <%= form.label :delete %>
-    <%= form.check_box :delete %>
+    <%= form.label :can_read %>
+    <%= form.check_box :can_read %>
+  </div>
+
+  <div class="field">
+    <%= form.label :can_update %>
+    <%= form.check_box :can_update %>
+  </div>
+
+  <div class="field">
+    <%= form.label :can_delete %>
+    <%= form.check_box :can_delete %>
   </div>
 
   <div class="actions">
